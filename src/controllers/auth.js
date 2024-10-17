@@ -6,6 +6,7 @@ import db from "../models";
 import bcrypt from "bcryptjs";
 require("dotenv").config();
 
+console.log("hihi");
 const hashPassword = (password) =>
   bcrypt.hashSync(password, bcrypt.genSaltSync(12));
 // export const register = async (req, res) => {
