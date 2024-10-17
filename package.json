@@ -8,7 +8,8 @@
     "node": "20.x"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node server.js"
+    "start": "nodemon --exec babel-node server.js",
+    "build": "react-scripts build"
   },
   "keywords": [],
   "author": "",
