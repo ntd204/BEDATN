@@ -1,13 +1,16 @@
 import express from "express";
-import dotenv from "dotenv";
-// require("dotenv").config();
+// import dotenv from "dotenv";
+require("dotenv").config();
 import cors from "cors";
 import initRoutes from "./src/routes/index.js";
 import connectDatabase from "./src/config/connectDatabase.js";
 
-dotenv.config();
-
+// dotenv.config();
+process.env.TZ = "Asia/Ho_Chi_Minh";
 const app = express();
+app.get("/", (req, res) => {
+  res.json({ message: "Ok" });
+});
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
