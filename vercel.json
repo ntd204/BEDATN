@@ -8,8 +8,8 @@
   ],
   "routes": [
     {
-      "src": " /data/(.*)",
-      "dest": "/"
+      "src": "/api/connectDatabase",
+      "dest": "/server.js"
     }
   ]
 }
