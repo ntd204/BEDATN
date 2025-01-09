@@ -11,6 +11,9 @@ import mysql2 from "mysql2";
 
 if (config.dialect === "mysql") {
   config.dialectModule = mysql2;
+  config.dialectOptions = {
+    connectTimeout: 60000, // Tăng thời gian chờ kết nối lên 60 giây
+  };
 }
 
 let sequelize;
