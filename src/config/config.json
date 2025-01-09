@@ -6,5 +6,13 @@
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
+  },
+  "production": {
+    "username": "uq9eijekovkvsdaq",
+    "password": "Bi8WpGOifgY4Nk6LGnKH",
+    "database": "bkhaen8kiytaxnxnxbo6",
+    "host": "bkhaen8kiytaxnxnxbo6-mysql.services.clever-cloud.com",
+    "dialect": "mysql",
+    "logging": false
   }
 }
