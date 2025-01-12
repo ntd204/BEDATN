@@ -27,6 +27,8 @@ const port = process.env.PORT || 8888;
 const listener = app.listen(port, () => {
   console.log(`Server is running on the port ${listener.address().port}`);
 });
+console.log("🔎 PORT:", process.env.PORT);
+console.log("🔎 DB_HOST:", process.env.DB_HOST);
 // app.get("/api/connectDatabase", async (req, res) => {
 //   try {
 //     await connectDatabase();
