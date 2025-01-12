@@ -9,6 +9,7 @@ import initRoutes from "./src/routes/index.js";
 process.env.TZ = "Asia/Ho_Chi_Minh";
 const app = express();
 app.get("/", (req, res) => {
+  console.log("🔎 RUN DEFAULT");
   res.json({ message: "Ok" });
 });
 app.use(
