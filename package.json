@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "nodemon --exec babel-node server.js",
     "build": "npx babel src -d dist",
-    "start": "node dist/server.js"
+    "start": "nodemon --exec babel-node dist/server.js"
   },
   "keywords": [],
   "author": "",
