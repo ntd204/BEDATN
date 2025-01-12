@@ -19,19 +19,13 @@ if (config.dialect === "mysql") {
 let sequelize;
 if (config?.use_env_variable) {
   sequelize = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USERNAME,
-    process.env.DB_PASSWORD || null,
+    process.env.DB_NAME, // Tên database
+    process.env.DB_USERNAME, // Tài khoản
+    process.env.DB_PASSWORD, // Mật khẩu
     {
-      host: process.env.DB_HOST,
-      dialect: process.env.DB_DIALECT,
-      logging: false,
-      // dialectOptions: {
-      //     ssl: {
-      //         require: true, // This will help you. But you will see nwe error
-      //         rejectUnauthorized: false // This line will fix new error
-      //     }
-      // },
+      host: process.env.DB_HOST, // Địa chỉ host
+      dialect: "mysql", // Loại cơ sở dữ liệu
+      logging: false, // Tắt log SQL (để true nếu cần debug)
     }
   );
 } else {
