@@ -30,13 +30,13 @@ const listener = app.listen(port, () => {
 });
 console.log("🔎 PORT:", process.env.PORT);
 console.log("🔎 DB_HOST:", process.env.DB_HOST);
-// app.get("/api/connectDatabase", async (req, res) => {
-//   try {
-//     await connectDatabase();
-//     res.status(200).json({ message: "Database connected successfully!" });
-//   } catch (error) {
-//     res
-//       .status(500)
-//       .json({ error: "Database connection failed!", details: error.message });
-//   }
-// });
+app.get("/api/connectDatabase", async (req, res) => {
+  try {
+    await connectDatabase();
+    res.status(200).json({ message: "Database connected successfully!" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Database connection failed!", details: error.message });
+  }
+});
