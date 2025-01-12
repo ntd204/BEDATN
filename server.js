@@ -9,7 +9,6 @@ import connectDatabase from "./src/config/connectDatabase.js";
 process.env.TZ = "Asia/Ho_Chi_Minh";
 const app = express();
 app.get("/", (req, res) => {
-  console.log("🔎 RUN DEFAULT");
   res.json({ message: "Ok" });
 });
 app.use(
@@ -21,15 +20,6 @@ app.use(
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-initRoutes(app);
-connectDatabase();
-
-const port = process.env.PORT || 8888;
-const listener = app.listen(port, () => {
-  console.log(`Server is running on the port ${listener.address().port}`);
-});
-console.log("🔎 PORT:", process.env.PORT);
-console.log("🔎 DB_HOST:", process.env.DB_HOST);
 app.get("/api/connectDatabase", async (req, res) => {
   try {
     await connectDatabase();
@@ -39,4 +29,12 @@ app.get("/api/connectDatabase", async (req, res) => {
       .status(500)
       .json({ error: "Database connection failed!", details: error.message });
   }
+});
+
+initRoutes(app);
+connectDatabase();
+
+const port = process.env.PORT || 8888;
+const listener = app.listen(port, () => {
+  console.log(`Server is running on the port ${listener.address().port}`);
 });
