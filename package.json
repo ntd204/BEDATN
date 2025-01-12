@@ -8,8 +8,8 @@
   },
   "scripts": {
     "start": "nodemon --exec babel-node server.js",
-    "build": "npm install --legacy-peer-deps && npx babel src -d dist",
-    "prod": "node dist/server.js"
+    "dev": "nodemon src/server.js",
+    "build": "echo 'No build step required'"
   },
   "keywords": [],
   "author": "",

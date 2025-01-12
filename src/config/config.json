@@ -8,10 +8,10 @@
     "logging": false
   },
   "production": {
-    "username": "uq9eijekovkvsdaq",
-    "password": "Bi8WpGOifgY4Nk6LGnKH",
-    "database": "bkhaen8kiytaxnxnxbo6",
-    "host": "bkhaen8kiytaxnxnxbo6-mysql.services.clever-cloud.com",
+    "username": "root",
+    "password": "QeLYOSOroiBRnAyZuWhqELBFkZnePXoq",
+    "database": "railway",
+    "host": "mysql.railway.internal",
     "dialect": "mysql",
     "logging": false
   }
