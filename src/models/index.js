@@ -3,40 +3,39 @@
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
+const mysql2 = require("mysql2");
+require("dotenv").config();
+
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || "development";
-const config = require(__dirname + "/../config/config.json")[env];
 const db = {};
-import mysql2 from "mysql2";
 
-if (config.dialect === "mysql") {
-  config.dialectModule = mysql2;
-  config.dialectOptions = {
-    connectTimeout: 60000, // Tăng thời gian chờ kết nối lên 60 giây
-  };
-}
+// Cấu hình Sequelize với biến môi trường
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USERNAME,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST,
+    dialect: "mysql",
+    dialectModule: mysql2,
+    logging: false,
+    dialectOptions: {
+      connectTimeout: 60000, // Tăng thời gian chờ kết nối
+    },
+  }
+);
 
-let sequelize;
-if (config?.use_env_variable) {
-  sequelize = new Sequelize(
-    process.env.DB_NAME, // Tên database
-    process.env.DB_USERNAME, // Tài khoản
-    process.env.DB_PASSWORD, // Mật khẩu
-    {
-      host: process.env.DB_HOST, // Địa chỉ host
-      dialect: "mysql", // Loại cơ sở dữ liệu
-      logging: false, // Tắt log SQL (để true nếu cần debug)
-    }
-  );
-} else {
-  sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    config
-  );
-}
+// Kiểm tra kết nối Database
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("✅ Kết nối Database thành công!");
+  })
+  .catch((err) => {
+    console.error("❌ Kết nối Database thất bại:", err);
+  });
 
+// Load các models tự động
 fs.readdirSync(__dirname)
   .filter((file) => {
     return (
@@ -51,6 +50,7 @@ fs.readdirSync(__dirname)
     db[model.name] = model;
   });
 
+// Gọi hàm associate nếu có
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
