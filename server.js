@@ -3,7 +3,7 @@ import express from "express";
 require("dotenv").config();
 import cors from "cors";
 import initRoutes from "./src/routes/index.js";
-// import connectDatabase from "./src/config/connectDatabase.js";
+import connectDatabase from "./src/config/connectDatabase.js";
 
 // dotenv.config();
 process.env.TZ = "Asia/Ho_Chi_Minh";
@@ -22,7 +22,7 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 initRoutes(app);
-// connectDatabase();
+connectDatabase();
 
 const port = process.env.PORT || 8888;
 const listener = app.listen(port, () => {
