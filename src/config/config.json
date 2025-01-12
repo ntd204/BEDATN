@@ -8,11 +8,6 @@
     "logging": false
   },
   "production": {
-    "username": "root",
-    "password": "QeLYOSOroiBRnAyZuWhqELBFkZnePXoq",
-    "database": "railway",
-    "host": "mysql.railway.internal",
-    "dialect": "mysql",
-    "logging": false
+    "use_env_variable": true
   }
 }
